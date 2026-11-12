@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  frontend:
+    name: Frontend (tsc + vite build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run build
+
+  backend:
+    name: Rust (cargo test, real ffmpeg)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      # ffmpeg + ffprobe are required; tests generate their own fixtures
+      # (tests/common/mod.rs) on first run
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: cargo test --manifest-path src-tauri/Cargo.toml --lib --tests -- --skip whisper_transcribe
+      - name: Check Rust formatting/lints (non-blocking)
+        run: cargo check --manifest-path src-tauri/Cargo.toml
