@@ -28,9 +28,25 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: src-tauri
-      # ffmpeg + ffprobe are required; tests generate their own fixtures
-      # (tests/common/mod.rs) on first run
-      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      # Tauri compiles its Linux WebKitGTK backend even though our tests are
+      # headless. These are the official Ubuntu build dependencies, plus
+      # ffmpeg/ffprobe (tests generate their own fixtures on first run).
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            curl \
+            file \
+            ffmpeg \
+            libayatana-appindicator3-dev \
+            libglib2.0-dev \
+            librsvg2-dev \
+            libssl-dev \
+            libwebkit2gtk-4.1-dev \
+            libxdo-dev \
+            pkg-config \
+            wget
       - run: cargo test --manifest-path src-tauri/Cargo.toml --lib --tests -- --skip whisper_transcribe
       - name: Check Rust formatting/lints (non-blocking)
         run: cargo check --manifest-path src-tauri/Cargo.toml
