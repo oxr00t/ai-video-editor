@@ -23,7 +23,6 @@ fn export_two_clips_with_text() {
     let a = probe::probe(&test_media("clip_a.mp4")).unwrap();
     let b = probe::probe(&test_media("clip_b.mp4")).unwrap();
     let (a_id, b_id) = (a.id.clone(), b.id.clone());
-    let (a_path, b_path) = (a.path.clone(), b.path.clone());
     project.assets.push(a);
     project.assets.push(b);
 

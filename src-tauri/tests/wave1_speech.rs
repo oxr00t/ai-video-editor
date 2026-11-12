@@ -31,9 +31,9 @@ fn whisper_transcribe_runs_and_parses() {
         return;
     }
     let raw = std::fs::read_to_string(out.unwrap()).unwrap();
-    let (tr, lines) = transcribe::parse(&raw).expect("parse");
-    assert!(tr.words.len() >= 0);
-    let _ = lines;
+    // The fixture is a sine tone, so it may produce zero words; parsing a
+    // valid Whisper JSON is the behavior this smoke test verifies.
+    let _ = transcribe::parse(&raw).expect("parse");
     let _ = std::fs::remove_file(&wav);
 }
 

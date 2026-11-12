@@ -1,7 +1,6 @@
 //! Silence detection via ffmpeg silencedetect — catches the pauses Whisper's
 //! text usually swallows (the workflow's exact technique).
 
-use crate::engine::run_capture;
 use std::process::Command;
 
 /// Detect silences in a WAV. Returns (start_ms, end_ms) ranges.
