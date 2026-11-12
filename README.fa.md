@@ -46,8 +46,8 @@ Claude Code کدبیس تو رو می‌خونه و فایل‌ها رو ادی�
 `pip install openai-whisper`.
 
 ```bash
-git clone https://github.com/YOUR_USER/media-agent.git
-cd media-agent
+git clone https://github.com/YOUR_USER/ai-video-editor.git
+cd ai-video-editor
 npm install
 npm run tauri dev
 ```
@@ -63,8 +63,8 @@ npm run tauri dev
 ```json
 {
   "mcpServers": {
-    "media-agent": {
-      "command": "D:\\path\\to\\media-agent\\src-tauri\\target\\debug\\app_media_creator.exe",
+    "ai-video-editor": {
+      "command": "D:\\path\\to\\ai-video-editor\\src-tauri\\target\\debug\\app_media_creator.exe",
       "args": ["--mcp"]
     }
   }
@@ -84,9 +84,9 @@ npm run tauri dev
 
 | | آدرس |
 |---|---|
-| BTC | `YOUR_BTC_ADDRESS` |
-| ETH (ERC20) | `YOUR_ETH_ADDRESS` |
-| USDT (TRC20) | `YOUR_USDT_TRC20_ADDRESS` |
+| TON | `UQA_YKoZvzl7bvRexWhF9CslqRjQ_AzkOA5sg-fJaijhD9DI` |
+| USDT (BEP20) | `0x02d1537479c88f50B627A1e8D268C246Cc866b99` |
+| USDT (TRC20) | `TTwRaiji2AxAJnxnAoAjse3x7oqQUfcSZM` |
 
 ## لایسنس
 

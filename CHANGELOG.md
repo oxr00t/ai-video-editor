@@ -39,4 +39,4 @@ First public release — the walking skeleton plus the talking-head pipeline.
 - Local Whisper transcription (word-level, `initial_prompt`, UTF-8-safe
   child-process environment) and ffmpeg `silencedetect`
 
-[0.1.0]: https://github.com/YOUR_USER/media-agent/releases/tag/v0.1.0
+[0.1.0]: https://github.com/oxr00t/ai-video-editor/releases/tag/v0.1.0
